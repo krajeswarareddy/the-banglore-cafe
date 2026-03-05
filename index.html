@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>The Bangalore Cafe · ದಿ ಬೆಂಗಳೂರು ಕೆಫೆ</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600;700&family=Noto+Sans+Kannada:wght@400;600;700&display=swap" rel="stylesheet"/>
+
+  <!-- Stylesheets -->
+<link rel="stylesheet" href="base.css"/>
+<link rel="stylesheet" href="home.css"/>
+<link rel="stylesheet" href="menu.css"/>
+<link rel="stylesheet" href="pages.css"/>
+</head>
+<body>
+
+<!-- CURSOR CUSTOM -->
+<div id="curDot" style="position:fixed;width:7px;height:7px;background:var(--sf);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .08s"></div>
+<div id="curRing" style="position:fixed;width:36px;height:36px;border:1.5px solid rgba(232,99,10,.5);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all .14s ease"></div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <div class="n-logo" onclick="goPage('home')">The <span>Bangalore</span> Cafe</div>
+  <ul class="n-links">
+    <li><a href="#" onclick="goPage('home')" id="nl-home" class="active">Home</a></li>
+    <li><a href="#" onclick="goPage('menu')" id="nl-menu">Menu</a></li>
+    <li><a href="#" onclick="goPage('reserve')" id="nl-reserve">Reservations</a></li>
+    <li><a href="#" onclick="goPage('reviews')" id="nl-reviews">Reviews</a></li>
+  </ul>
+  <div class="n-right">
+    <button class="n-icon-btn" onclick="toggleTheme()" title="Toggle theme" id="themeBtn">🌙</button>
+    <button class="ham" id="hamBtn" onclick="toggleMob()">
+      <span></span><span></span><span></span>
+    </button>
+    <button class="n-reserve" onclick="openResModal()">Reserve a Table</button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mob-menu" id="mobMenu">
+  <a href="#" onclick="goPage('home');toggleMob()">🏠 Home</a>
+  <a href="#" onclick="goPage('menu');toggleMob()">🍽️ Menu</a>
+  <a href="#" onclick="goPage('reserve');toggleMob()">📅 Reservations</a>
+  <a href="#" onclick="goPage('reviews');toggleMob()">⭐ Reviews</a>
+  <a href="#" onclick="openResModal();toggleMob()" style="color:var(--sf)">Reserve a Table →</a>
+</div>
+
+<!-- ═══════ HOME PAGE ═══════ -->
+<div class="page active" id="pg-home">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="particle"></div><div class="particle"></div>
+    <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    <div class="ring"></div><div class="ring"></div><div class="ring"></div>
+
+    <p class="h-eyebrow">Est. Bengaluru · Shanti Nagar</p>
+    <h1 class="h-title">The<br/><span class="orange">Bangalore</span><br/>Cafe</h1>
+    <p class="h-kn">ದಿ ಬೆಂಗಳೂರು ಕೆಫೆ</p>
+
+    <div class="h-stars-row">
+      <div class="h-stars">
+        <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+        <svg viewBox="0 0 24 24" style="fill:rgba(244,161,36,.3)"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+      </div>
+      <span class="h-dot"></span>
+      <span class="h-rtext"><strong>4.2</strong> · 11,531 Reviews</span>
+      <span class="h-dot"></span>
+      <span class="open-pill">Open Now</span>
+    </div>
+
+    <div class="h-badges">
+      <span class="h-badge">🌿 100% Vegetarian</span>
+      <span class="h-badge">🚗 Drive-Through</span>
+      <span class="h-badge">🛵 Delivery</span>
+      <span class="h-badge">🪑 Dine-In</span>
+      <span class="h-badge">📞 Reservations</span>
+    </div>
+
+    <div class="h-ctas">
+      <button class="hero-btn-main" onclick="goPage('menu')">
+        <span class="hbm-icon">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg>
+        </span>
+        <span class="hbm-text">
+          <span class="hbm-label">Explore Menu</span>
+          <span class="hbm-sub">26 dishes · Pure Veg</span>
+        </span>
+        <span class="hbm-arrow">→</span>
+      </button>
+      <button class="hero-btn-sec" onclick="openResModal()">
+        <span class="hbs-icon">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="14" x2="8" y2="14" stroke-width="3" stroke-linecap="round"/><line x1="12" y1="14" x2="12" y2="14" stroke-width="3" stroke-linecap="round"/><line x1="16" y1="14" x2="16" y2="14" stroke-width="3" stroke-linecap="round"/></svg>
+        </span>
+        <span class="hbs-text">
+          <span class="hbs-label">Reserve a Table</span>
+          <span class="hbs-sub">Instant WhatsApp confirm</span>
+        </span>
+        <span class="hbs-dot"></span>
+      </button>
+    </div>
+    <div class="scroll-hint"><span>Scroll</span><div class="scroll-line"></div></div>
+  </section>
+
+  <!-- TICKER -->
+  <div class="ticker">
+    <div class="ticker-t">
+      <span>Shukla Ki Potli</span><span class="tdot">✦</span>
+      <span>Tandoori Cigars</span><span class="tdot">✦</span>
+      <span>Chatpate Cones</span><span class="tdot">✦</span>
+      <span>Popeye Cream Shake</span><span class="tdot">✦</span>
+      <span>Khatta Meetha Paani Poori</span><span class="tdot">✦</span>
+      <span>Cheese Kala Pav Bhaji</span><span class="tdot">✦</span>
+      <span>TBC Special Butter Naan</span><span class="tdot">✦</span>
+      <span>Hot Chocolate Fudge</span><span class="tdot">✦</span>
+      <span>Mama's Broken Tart</span><span class="tdot">✦</span>
+      <span>Shukla Ki Potli</span><span class="tdot">✦</span>
+      <span>Tandoori Cigars</span><span class="tdot">✦</span>
+      <span>Chatpate Cones</span><span class="tdot">✦</span>
+      <span>Popeye Cream Shake</span><span class="tdot">✦</span>
+      <span>Khatta Meetha Paani Poori</span><span class="tdot">✦</span>
+      <span>Cheese Kala Pav Bhaji</span><span class="tdot">✦</span>
+      <span>TBC Special Butter Naan</span><span class="tdot">✦</span>
+      <span>Hot Chocolate Fudge</span><span class="tdot">✦</span>
+      <span>Mama's Broken Tart</span><span class="tdot">✦</span>
+    </div>
+  </div>
+
+  <!-- INFO BAR -->
+  <div class="info-bar">
+    <div class="ibar-item"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Opens 12 PM · Closes 11 PM</div>
+    <div class="ibar-item"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Shanti Nagar, Bengaluru 560027</div>
+    <div class="ibar-item"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.12 3a2 2 0 012-2h3a2 2 0 012 2 15.6 15.6 0 00.4 3.67l-2.6 2.6a16 16 0 006.64 6.64l2.6-2.6a15.6 15.6 0 003.67.4 2 2 0 012 2z"/></svg>095359 64043</div>
+    <div class="ibar-item"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 5h12M9 19.5a.5.5 0 11-1 0M16 19.5a.5.5 0 11-1 0"/></svg>Dine-in · Drive-through · Delivery</div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="sec">
+    <div class="sec-inner">
+      <div class="about-grid">
+        <div class="rv-l">
+          <p class="sec-lbl">Our Story</p>
+          <h2 class="sec-ttl">Where Bengaluru<br/><em>comes to eat</em></h2>
+          <p class="about-p">Nestled in the heart of Shanti Nagar, The Bangalore Cafe is a celebration of India's most vibrant culinary traditions — reimagined with a contemporary twist for the modern food lover.</p>
+          <p class="about-p">From street-food-inspired chaats and fusion bites to rich gravies and indulgent desserts, every dish is crafted with love and the finest vegetarian ingredients. Pure veg. Always fresh. Unmistakably Bengaluru.</p>
+          <p class="about-p">Whether you're here for a quick bite or a long evening with friends, our warm ambience and attentive service makes every visit unforgettable.</p>
+        </div>
+        <div class="rv-r">
+          <div class="stats-grid">
+            <div class="stat-c rv d1"><div class="stat-n">4.2★</div><div class="stat-l">Average Rating</div></div>
+            <div class="stat-c rv d2"><div class="stat-n">11K+</div><div class="stat-l">Happy Diners</div></div>
+            <div class="stat-c rv d3"><div class="stat-n">100%</div><div class="stat-l">Vegetarian</div></div>
+            <div class="stat-c rv d4"><div class="stat-n">₹₹</div><div class="stat-l">Mid-Range</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="sec" style="background:var(--bg2);padding-top:5rem;padding-bottom:5rem">
+    <div class="sec-inner">
+      <div class="text-center rv">
+        <p class="sec-lbl" style="justify-content:center">Why Choose Us</p>
+        <h2 class="sec-ttl">Everything you <em>love</em></h2>
+      </div>
+      <div class="feat-grid">
+        <div class="feat-card rv d1">
+          <div class="feat-icon">🌿</div>
+          <div class="feat-ttl">100% Pure Vegetarian</div>
+          <p class="feat-desc">Every ingredient is carefully sourced. No meat, no compromise — just pure, wholesome food crafted with love.</p>
+        </div>
+        <div class="feat-card rv d2">
+          <div class="feat-icon">🍳</div>
+          <div class="feat-ttl">Fusion Kitchen</div>
+          <p class="feat-desc">Classic Indian flavours meet global techniques. From tandoori cigars to teriyaki sizzlers — expect the unexpected.</p>
+        </div>
+        <div class="feat-card rv d3">
+          <div class="feat-icon">📅</div>
+          <div class="feat-ttl">Easy Reservations</div>
+          <p class="feat-desc">Book your table in seconds. Your reservation arrives directly on WhatsApp — instant confirmation, zero hassle.</p>
+        </div>
+        <div class="feat-card rv d4">
+          <div class="feat-icon">🚗</div>
+          <div class="feat-ttl">Drive-Through & Delivery</div>
+          <p class="feat-desc">Can't make it in? Drive-through pick-up or no-contact delivery brings The Bangalore Cafe to you.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ ORDER & RESERVE SECTION ═══ -->
+  <section class="sec ord-sec">
+    <div class="sec-inner">
+      <div class="text-center rv">
+        <p class="sec-lbl" style="justify-content:center">Hungry or Planning a Visit?</p>
+        <h2 class="sec-ttl">Order Online or <em>Reserve a Table</em></h2>
+        <p style="font-size:.88rem;color:var(--txt2);max-width:480px;margin:0 auto 3rem">Get The Bangalore Cafe delivered to your door or book your table in seconds — directly on WhatsApp.</p>
+      </div>
+      <div class="ord-grid rv">
+
+        <!-- ZOMATO -->
+        <a href="https://www.zomato.com/bangalore/the-bangalore-cafe-1-shanti-nagar-bangalore/order" target="_blank" class="ord-card ord-zomato">
+          <div class="ord-card-glow"></div>
+          <div class="ord-logo-wrap">
+            <div class="ord-logo ord-logo-z">
+              <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" width="34" height="34">
+                <path d="M10 14h40L26 44h24" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+          <div class="ord-info">
+            <div class="ord-brand">Zomato</div>
+            <div class="ord-tag">Order Delivery</div>
+            <div class="ord-desc">Fast delivery · Live tracking · Exclusive offers</div>
+          </div>
+          <div class="ord-arrow">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M7 17l10-10M17 7H7M17 7v10"/></svg>
+          </div>
+          <div class="ord-badge">Open Now</div>
+        </a>
+
+        <!-- SWIGGY -->
+        <a href="https://www.swiggy.com/city/bangalore/the-bangalore-cafe-double-road-central-bangalore-rest108098?utm_source=GooglePlaceOrder&utm_campaign=GoogleMap&is_retargeting=true&media_source=GooglePlaceOrder" target="_blank" class="ord-card ord-swiggy">
+          <div class="ord-card-glow"></div>
+          <div class="ord-logo-wrap">
+            <div class="ord-logo ord-logo-s">
+              <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" width="32" height="32">
+                <path d="M30 8C19 8 12 16 12 24c0 10 10 16 18 22 8-6 18-12 18-22C48 16 41 8 30 8z" fill="#fff" opacity=".9"/>
+                <path d="M22 26c0-4.4 3.6-8 8-8s8 3.6 8 8" stroke="#FC8019" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+              </svg>
+            </div>
+          </div>
+          <div class="ord-info">
+            <div class="ord-brand">Swiggy</div>
+            <div class="ord-tag">Order Delivery</div>
+            <div class="ord-desc">30 min delivery · Real-time tracking · Deals</div>
+          </div>
+          <div class="ord-arrow">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M7 17l10-10M17 7H7M17 7v10"/></svg>
+          </div>
+          <div class="ord-badge">Open Now</div>
+        </a>
+
+        <!-- WHATSAPP RESERVE -->
+        <div class="ord-card ord-wa" onclick="openResModal()" style="cursor:pointer">
+          <div class="ord-card-glow"></div>
+          <div class="ord-logo-wrap">
+            <div class="ord-logo ord-logo-wa">
+              <svg viewBox="0 0 24 24" fill="white" width="30" height="30"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.5 2C6.253 2 2 6.253 2 11.5c0 1.938.577 3.741 1.566 5.245L2 22l5.405-1.533A9.456 9.456 0 0011.5 21C16.747 21 21 16.747 21 11.5S16.747 2 11.5 2z"/></svg>
+            </div>
+          </div>
+          <div class="ord-info">
+            <div class="ord-brand">WhatsApp</div>
+            <div class="ord-tag">Reserve a Table</div>
+            <div class="ord-desc">Instant confirm · Choose date, time & guests</div>
+          </div>
+          <div class="ord-arrow">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M7 17l10-10M17 7H7M17 7v10"/></svg>
+          </div>
+          <div class="ord-badge ord-badge-wa">Book Now</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <section class="sec testi-sec">
+    <div class="sec-inner">
+      <div class="rv">
+        <p class="sec-lbl">What People Say</p>
+        <h2 class="sec-ttl">Guest <em>Reviews</em></h2>
+      </div>
+      <div class="rating-hero rv">
+        <div class="r-big">
+          <div class="r-num">4.2</div>
+          <div class="r-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+            <svg viewBox="0 0 24 24" style="fill:rgba(244,161,36,.25)"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          </div>
+          <div class="r-cnt">11,531 reviews</div>
+        </div>
+        <div class="r-bars">
+          <div class="r-row"><span class="r-lbl">5</span><div class="r-track"><div class="r-fill" style="width:52%"></div></div><span class="r-pct">52%</span></div>
+          <div class="r-row"><span class="r-lbl">4</span><div class="r-track"><div class="r-fill" style="width:24%"></div></div><span class="r-pct">24%</span></div>
+          <div class="r-row"><span class="r-lbl">3</span><div class="r-track"><div class="r-fill" style="width:13%"></div></div><span class="r-pct">13%</span></div>
+          <div class="r-row"><span class="r-lbl">2</span><div class="r-track"><div class="r-fill" style="width:6%"></div></div><span class="r-pct">6%</span></div>
+          <div class="r-row"><span class="r-lbl">1</span><div class="r-track"><div class="r-fill" style="width:5%"></div></div><span class="r-pct">5%</span></div>
+        </div>
+      </div>
+      <div class="testi-grid">
+        <div class="testi-card rv d1">
+          <div class="tc-head"><div class="tc-av" style="background:linear-gradient(135deg,#E8630A,#F4A124)">M</div><div><div class="tc-name">Mythri Channamalladevaru</div><div class="tc-meta">Local Guide · 47 reviews</div></div></div>
+          <div class="tc-stars"><svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg viewBox="0 0 24 24" style="fill:rgba(244,161,36,.25)"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg viewBox="0 0 24 24" style="fill:rgba(244,161,36,.25)"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg></div>
+          <p class="tc-text">Visited The Bangalore Cafe — ambience is lovely. Ordered Sadak Chaap Sliders and Teriyaki Butter Garlic Sizzler. A bit premium-priced for the portions, but the flavours are genuinely unique.</p>
+          <div class="tc-date">3 weeks ago</div>
+        </div>
+        <div class="testi-card rv d2">
+          <div class="tc-head"><div class="tc-av" style="background:linear-gradient(135deg,#2D6A4F,#40916C)">U</div><div><div class="tc-name">Udit Kansal</div><div class="tc-meta">Local Guide · 396 reviews</div></div></div>
+          <div class="tc-stars"><svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg></div>
+          <p class="tc-text">Great variety of fusion dishes — enjoyed everything we ordered! Mojo Bites (Pesto Mushroom) and Shukla Ki Potli were absolute highlights. The staff was warm and attentive throughout.</p>
+          <div class="tc-date">1 month ago</div>
+        </div>
+        <div class="testi-card rv d3">
+          <div class="tc-head"><div class="tc-av" style="background:linear-gradient(135deg,#C75B7A,#E07A99)">P</div><div><div class="tc-name">Poornima Kadam S.</div><div class="tc-meta">Local Guide · 37 reviews</div></div></div>
+          <div class="tc-stars"><svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg></div>
+          <p class="tc-text">Food is 5/5 delicious and the ambience is great. Special shoutout to Umesh for his remarkable service — presence of mind and genuine hospitality made our anniversary dinner truly special!</p>
+          <div class="tc-date">2 months ago</div>
+        </div>
+      </div>
+      <div class="text-center mt2 rv">
+        <button class="btn-outline" onclick="goPage('reviews')">
+          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          See All Reviews
+          <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M7 17l10-10M17 7H7M17 7v10"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+</div><!-- end home page -->
+
+<!-- ═══════ MENU PAGE ═══════ -->
+<div class="page" id="pg-menu">
+  <div class="menu-page-wrap">
+    <div class="menu-hero-band">
+      <p class="sec-lbl" style="justify-content:center">The Bangalore Cafe</p>
+      <h2 class="sec-ttl" style="margin-bottom:.5rem">Our <em>Menu</em></h2>
+      <p style="font-size:.85rem;color:var(--txt2)">100% Pure Vegetarian · Fusion Flavours · Bengaluru Soul</p>
+      <div class="menu-search-wrap">
+        <div class="menu-search-ico"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+        <input class="menu-search" type="text" placeholder="Search dishes, ingredients…" id="menuSearch" oninput="searchMenu(this.value)"/>
+      </div>
+    </div>
+    <div class="menu-layout">
+      <!-- SIDEBAR -->
+      <div class="menu-sidebar" id="menuSidebar">
+        <button class="cat-btn active" onclick="scrollCat('popular',this)"><span class="cat-ico">🔥</span><span>Most Popular</span><span class="cat-count">5</span></button>
+        <button class="cat-btn" onclick="scrollCat('chaat',this)"><span class="cat-ico">🥘</span><span>Chaat & Street</span><span class="cat-count">10</span></button>
+        <button class="cat-btn" onclick="scrollCat('starters',this)"><span class="cat-ico">🍢</span><span>Starters</span><span class="cat-count">13</span></button>
+        <button class="cat-btn" onclick="scrollCat('soups',this)"><span class="cat-ico">🍲</span><span>Soups</span><span class="cat-count">5</span></button>
+        <button class="cat-btn" onclick="scrollCat('mains',this)"><span class="cat-ico">🍛</span><span>Curries & Mains</span><span class="cat-count">14</span></button>
+        <button class="cat-btn" onclick="scrollCat('rice',this)"><span class="cat-ico">🍚</span><span>Rice & Biryani</span><span class="cat-count">14</span></button>
+        <button class="cat-btn" onclick="scrollCat('pizza',this)"><span class="cat-ico">🍕</span><span>Wood-Fire Pizza</span><span class="cat-count">12</span></button>
+        <button class="cat-btn" onclick="scrollCat('pasta',this)"><span class="cat-ico">🍝</span><span>Pasta</span><span class="cat-count">8</span></button>
+        <button class="cat-btn" onclick="scrollCat('breads',this)"><span class="cat-ico">🫓</span><span>Breads</span><span class="cat-count">12</span></button>
+        <button class="cat-btn" onclick="scrollCat('desserts',this)"><span class="cat-ico">🍨</span><span>Desserts</span><span class="cat-count">20</span></button>
+      </div>
+
+      <!-- CONTENT -->
+      <div class="menu-content" id="menuContent">
+        <div id="menuEmpty" class="menu-empty" style="display:none">
+          <div class="me-ico">🔍</div>
+          <p>No dishes found for "<span id="emptyQ"></span>"</p>
+        </div>
+
+        <!-- POPULAR -->
+        <div class="menu-cat-section" id="cat-popular">
+          <div class="cat-header">
+            <div class="cat-header-top"><span class="cat-header-icon">🔥</span><h3 class="cat-header-title">Most Popular</h3></div>
+            <p class="cat-header-desc">Dishes guests rave about in every review — the must-try picks at The Bangalore Cafe.</p>
+          </div>
+          <div class="items-chef" id="items-popular"></div>
+        </div>
+        <!-- CHAAT -->
+        <div class="menu-cat-section" id="cat-chaat">
+          <div class="cat-header">
+            <div class="cat-header-top"><span class="cat-header-icon">🥘</span><h3 class="cat-header-title">Chaat & Street Food</h3></div>
+            <p class="cat-header-desc">Bombay streets, Bengal lanes and Delhi corners — all on one menu.</p>
+          </div>
+          <div class="items-starters" id="items-chaat"></div>
+        </div>
+        <!-- STARTERS -->
+        <div class="menu-cat-section" id="cat-starters">
+          <div class="cat-header">
+            <div class="cat-header-top"><span class="cat-header-icon">🍢</span><h3 class="cat-header-title">Starters & Bites</h3></div>
+            <p class="cat-header-desc">Tandoori specials and fusion bites to kick off your meal.</p>
+          </div>
+          <div class="items-starters" id="items-starters"></div>
+        </div>
+        <!-- SOUPS -->
+        <div class="menu-cat-section" id="cat-soups">
+          <div class="cat-header">
+            <div class="cat-header-top"><span class="cat-header-icon">🍲</span><h3 class="cat-header-title">Classic Soups</h3></div>
+            <p class="cat-header-desc">Warm, comforting bowls to start your meal right.</p>
+          </div>
+          <div class="items-breads" id="items-soups"></div>
+        </div>
+        <!-- MAINS -->
+        <div class="menu-cat-section" id="cat-mains">
+          <div class="cat-header">
+            <div class="cat-header-top"><span class="cat-header-icon">🍛</span><h3 class="cat-header-title">Curries & Mains</h3></div>
+            <p class="cat-header-desc">Rich gravies, smoky curries and hearty mains — the heart of our kitchen.</p>
+          </div>
+          <div class="items-mains" id="items-mains"></div>
+        </div>
+        <!-- RICE -->
+        <div class="menu-cat-section" id="cat-rice">
+          <div class="cat-header">
+            <div class="cat-header-top"><span class="cat-header-icon">🍚</span><h3 class="cat-header-title">Rice, Biryani & Noodles</h3></div>
+            <p class="cat-header-desc">Dum biryanis, wok-tossed fried rice, and slurpy noodles.</p>
+          </div>
+          <div class="items-mains" id="items-rice"></div>
+        </div>
+        <!-- PIZZA -->
+        <div class="menu-cat-section" id="cat-pizza">
+          <div class="cat-header">
+            <div class="cat-header-top"><span class="cat-header-icon">🍕</span><h3 class="cat-header-title">Wood-Fire Pizza (12")</h3></div>
+            <p class="cat-header-desc">Neapolitan-style pizzas fired in our wood-burning oven.</p>
+          </div>
+          <div class="items-mains" id="items-pizza"></div>
+        </div>
+        <!-- PASTA -->
+        <div class="menu-cat-section" id="cat-pasta">
+          <div class="cat-header">
+            <div class="cat-header-top"><span class="cat-header-icon">🍝</span><h3 class="cat-header-title">Italian Pasta</h3></div>
+            <p class="cat-header-desc">Al dente pasta crafted with love — classic Italian and Indo-fusion styles.</p>
+          </div>
+          <div class="items-breads" id="items-pasta"></div>
+        </div>
+        <!-- BREADS -->
+        <div class="menu-cat-section" id="cat-breads">
+          <div class="cat-header">
+            <div class="cat-header-top"><span class="cat-header-icon">🫓</span><h3 class="cat-header-title">Indian Breads</h3></div>
+            <p class="cat-header-desc">Straight from the tandoor — flaky, buttery, irresistible.</p>
+          </div>
+          <div class="items-breads" id="items-breads"></div>
+        </div>
+        <!-- DESSERTS -->
+        <div class="menu-cat-section" id="cat-desserts">
+          <div class="cat-header">
+            <div class="cat-header-top"><span class="cat-header-icon">🍨</span><h3 class="cat-header-title">Desserts & Ice Cream</h3></div>
+            <p class="cat-header-desc">Sundaes, scoops and sweet endings worth saving room for.</p>
+          </div>
+          <div class="items-mains" id="items-desserts"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ RESERVATION PAGE ═══════ -->
+<div class="page" id="pg-reserve">
+  <div class="res-page-wrap">
+    <div class="res-hero">
+      <p class="sec-lbl" style="justify-content:center">Book Your Spot</p>
+      <h2 class="sec-ttl" style="margin-bottom:.5rem">Reserve a <em>Table</em></h2>
+      <p style="font-size:.85rem;color:var(--txt2)">Your reservation goes directly to us on WhatsApp — we'll confirm within minutes.</p>
+    </div>
+    <div class="res-layout">
+      <!-- INFO -->
+      <div>
+        <p class="sec-lbl">Visit Us</p>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;margin-bottom:1.5rem">Find <em style="color:var(--sf)">Us</em></h3>
+        <div class="res-info-cards">
+          <div class="res-info-card">
+            <div class="ric-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div><div class="ric-lbl">Address</div><div class="ric-val">4, Kengal Hanumanthaiah Rd,<br/>Bheemanna Garden, Shanti Nagar,<br/>Bengaluru, Karnataka 560027</div></div>
+          </div>
+          <div class="res-info-card">
+            <div class="ric-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.12 3a2 2 0 012-2h3a2 2 0 012 2 15.6 15.6 0 00.4 3.67l-2.6 2.6a16 16 0 006.64 6.64l2.6-2.6a15.6 15.6 0 003.67.4 2 2 0 012 2z"/></svg></div>
+            <div><div class="ric-lbl">Phone</div><div class="ric-val"><a href="tel:+919535964043" style="color:var(--txt)">095359 64043</a></div></div>
+          </div>
+          <div class="res-info-card">
+            <div class="ric-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+            <div><div class="ric-lbl">Hours</div>
+              <div class="ric-val">
+                <div class="hours-grid" style="margin-top:.5rem">
+                  <div class="hg-row"><span class="hg-day">Mon – Wed</span><span class="hg-time">12 PM – 11 PM</span></div>
+                  <div class="hg-row hg-today"><span class="hg-day">Thursday ← Today</span><span class="hg-time">12 PM – 11 PM</span></div>
+                  <div class="hg-row"><span class="hg-day">Friday</span><span class="hg-time">12 PM – 11:30 PM</span></div>
+                  <div class="hg-row"><span class="hg-day">Sat – Sun</span><span class="hg-time">11:30 AM – 11:30 PM</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:1.75rem">
+          <a href="https://maps.google.com/?q=The+Bangalore+Cafe+Shanti+Nagar+Bengaluru" target="_blank"
+             style="display:flex;align-items:center;gap:.6rem;padding:1rem 1.25rem;background:var(--card);border:1px solid var(--bdr);border-radius:10px;font-size:.83rem;color:var(--txt2);transition:all .2s"
+             onmouseover="this.style.borderColor='var(--sf)';this.style.color='var(--tm)'"
+             onmouseout="this.style.borderColor='var(--bdr)';this.style.color='var(--txt2)'">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Open in Google Maps →
+          </a>
+        </div>
+      </div>
+
+      <!-- FORM -->
+      <div>
+        <div class="res-form-card" id="resFormCard">
+          <p class="sec-lbl">Reservation Details</p>
+          <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;margin-bottom:1.75rem">Book Your <em style="color:var(--sf)">Table</em></h3>
+          <div class="form-grid">
+            <div><label class="f-lbl">Full Name <span class="f-req">*</span></label><input id="p-name" class="f-inp" type="text" placeholder="e.g. Priya Sharma"/></div>
+            <div><label class="f-lbl">Mobile <span class="f-req">*</span></label><input id="p-phone" class="f-inp" type="tel" placeholder="e.g. 9876543210"/></div>
+            <div><label class="f-lbl">Date <span class="f-req">*</span></label><input id="p-date" class="f-inp" type="date"/></div>
+            <div><label class="f-lbl">Time <span class="f-req">*</span></label>
+              <select id="p-time" class="f-inp f-sel">
+                <option value="">Select slot</option>
+                <option>12:00 PM</option><option>12:30 PM</option><option>01:00 PM</option>
+                <option>01:30 PM</option><option>02:00 PM</option><option>02:30 PM</option>
+                <option>06:00 PM</option><option>06:30 PM</option><option>07:00 PM</option>
+                <option>07:30 PM</option><option>08:00 PM</option><option>08:30 PM</option>
+                <option>09:00 PM</option><option>09:30 PM</option><option>10:00 PM</option>
+              </select>
+            </div>
+            <div><label class="f-lbl">Guests <span class="f-req">*</span></label>
+              <select id="p-guests" class="f-inp f-sel">
+                <option value="">How many?</option>
+                <option>1</option><option>2</option><option>3</option><option>4</option>
+                <option>5</option><option>6</option><option>7</option><option>8</option><option>9+</option>
+              </select>
+            </div>
+            <div><label class="f-lbl">Occasion</label>
+              <select id="p-occ" class="f-inp f-sel">
+                <option value="">None / Just Dining</option>
+                <option>Birthday 🎂</option><option>Anniversary 💑</option>
+                <option>Date Night 🌹</option><option>Family Gathering 👨‍👩‍👧</option>
+                <option>Business Meal 💼</option><option>Other</option>
+              </select>
+            </div>
+            <div class="f-full"><label class="f-lbl">Special Requests</label>
+              <textarea id="p-note" class="f-inp f-ta" placeholder="Dietary needs, seating preference, decorations…"></textarea>
+            </div>
+          </div>
+          <div class="f-error" id="resError">⚠️ Please fill in all required fields.</div>
+          <button class="wa-btn" onclick="submitRes()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.5 2C6.253 2 2 6.253 2 11.5c0 1.938.577 3.741 1.566 5.245L2 22l5.405-1.533A9.456 9.456 0 0011.5 21C16.747 21 21 16.747 21 11.5S16.747 2 11.5 2z"/></svg>
+            Send Reservation via WhatsApp
+          </button>
+          <p class="wa-note">Opens WhatsApp with your booking details — restaurant confirms within minutes.</p>
+        </div>
+        <!-- success -->
+        <div class="res-form-card" id="resSuccess" style="display:none">
+          <div class="res-success">
+            <div class="rs-ico">✅</div>
+            <h3 class="rs-ttl">Reservation Sent!</h3>
+            <p class="rs-msg">Your table request has been sent to The Bangalore Cafe via WhatsApp. They'll confirm your booking shortly.</p>
+            <div class="rs-det" id="resSummary"></div>
+            <button class="btn-primary" style="margin-top:1.5rem;width:100%;justify-content:center" onclick="resetRes()">
+              <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              Make Another Reservation
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ REVIEWS PAGE ═══════ -->
+<div class="page" id="pg-reviews">
+  <div class="reviews-page-wrap">
+    <div class="rev-hero">
+      <p class="sec-lbl" style="justify-content:center">Guest Voices</p>
+      <h2 class="sec-ttl" style="margin-bottom:.5rem">What People <em>Say</em></h2>
+      <p style="font-size:.85rem;color:var(--txt2)">Real reviews from our guests on Google</p>
+    </div>
+    <div class="rev-body">
+      <div class="rating-hero">
+        <div class="r-big">
+          <div class="r-num">4.2</div>
+          <div class="r-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+            <svg viewBox="0 0 24 24" style="fill:rgba(244,161,36,.25)"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          </div>
+          <div class="r-cnt">11,531 reviews</div>
+        </div>
+        <div class="r-bars">
+          <div class="r-row"><span class="r-lbl">5</span><div class="r-track"><div class="r-fill" style="width:52%"></div></div><span class="r-pct">52%</span></div>
+          <div class="r-row"><span class="r-lbl">4</span><div class="r-track"><div class="r-fill" style="width:24%"></div></div><span class="r-pct">24%</span></div>
+          <div class="r-row"><span class="r-lbl">3</span><div class="r-track"><div class="r-fill" style="width:13%"></div></div><span class="r-pct">13%</span></div>
+          <div class="r-row"><span class="r-lbl">2</span><div class="r-track"><div class="r-fill" style="width:6%"></div></div><span class="r-pct">6%</span></div>
+          <div class="r-row"><span class="r-lbl">1</span><div class="r-track"><div class="r-fill" style="width:5%"></div></div><span class="r-pct">5%</span></div>
+        </div>
+      </div>
+      <div class="rev-filter-bar">
+        <button class="rf-btn active" onclick="filterRevs('all',this)">All Reviews</button>
+        <button class="rf-btn" onclick="filterRevs(5,this)">⭐ 5 Stars</button>
+        <button class="rf-btn" onclick="filterRevs(4,this)">⭐ 4 Stars</button>
+        <button class="rf-btn" onclick="filterRevs(3,this)">⭐ 3 Stars</button>
+      </div>
+      <div class="rev-grid" id="revGrid"></div>
+      <!-- write a review -->
+      <div class="write-rev-card">
+        <div class="google-rev-wrap">
+          <div class="google-rev-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+          </div>
+          <div class="google-rev-content">
+            <h3 class="google-rev-title">Loved your visit? <em>Tell the world!</em></h3>
+            <p class="google-rev-msg">We'd be truly grateful if you shared your experience on Google. Your kind words mean a lot to us and help other food lovers discover The Bangalore Cafe. It takes just a minute — and it makes our whole team's day. 🙏</p>
+            <a href="https://maps.app.goo.gl/sxTSA9Xb1TYP4kR49" target="_blank" class="google-rev-btn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+              Write a Review on Google Maps
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M7 17l10-10M17 7H7M17 7v10"/></svg>
+            </a>
+            <p class="google-rev-note">Opens Google Maps in a new tab — sign in with any Google account to post</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-logo">The <span>Bangalore</span> Cafe</div>
+  <div class="ft-kn">ದಿ ಬೆಂಗಳೂರು ಕೆಫೆ</div>
+  <div class="ft-links">
+    <a href="#" onclick="goPage('home')">Home</a>
+    <a href="#" onclick="goPage('menu')">Menu</a>
+    <a href="#" onclick="goPage('reserve')">Reservations</a>
+    <a href="#" onclick="goPage('reviews')">Reviews</a>
+    <a href="tel:+919535964043">Call Us</a>
+    <a href="https://maps.google.com/?q=The+Bangalore+Cafe+Shanti+Nagar" target="_blank">Directions</a>
+  </div>
+  <div class="ft-div"></div>
+  <p class="ft-copy">© 2025 The Bangalore Cafe · Shanti Nagar, Bengaluru · All rights reserved</p>
+</footer>
+
+<!-- FLOAT BTN -->
+<button class="float-btn" onclick="openResModal()">🪑 Reserve a Table</button>
+
+<!-- RESERVATION MODAL -->
+<div id="resOverlay">
+  <div id="resModal">
+    <button class="mod-close" onclick="closeResModal()">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="mod-brand">
+      <div class="mod-brand-ico">🍛</div>
+      <div><div class="mod-brand-ttl">Reserve a Table</div><div class="mod-brand-sub">The Bangalore Cafe · Shanti Nagar</div></div>
+    </div>
+    <!-- form -->
+    <div id="modForm">
+      <div class="form-grid">
+        <div><label class="f-lbl">Full Name <span class="f-req">*</span></label><input id="m-name" class="f-inp" type="text" placeholder="e.g. Priya Sharma"/></div>
+        <div><label class="f-lbl">Mobile <span class="f-req">*</span></label><input id="m-phone" class="f-inp" type="tel" placeholder="e.g. 9876543210"/></div>
+        <div><label class="f-lbl">Date <span class="f-req">*</span></label><input id="m-date" class="f-inp" type="date"/></div>
+        <div><label class="f-lbl">Time <span class="f-req">*</span></label>
+          <select id="m-time" class="f-inp f-sel">
+            <option value="">Select slot</option>
+            <option>12:00 PM</option><option>12:30 PM</option><option>01:00 PM</option>
+            <option>01:30 PM</option><option>02:00 PM</option><option>06:00 PM</option>
+            <option>06:30 PM</option><option>07:00 PM</option><option>07:30 PM</option>
+            <option>08:00 PM</option><option>08:30 PM</option><option>09:00 PM</option>
+            <option>09:30 PM</option><option>10:00 PM</option>
+          </select>
+        </div>
+        <div><label class="f-lbl">Guests <span class="f-req">*</span></label>
+          <select id="m-guests" class="f-inp f-sel">
+            <option value="">How many?</option>
+            <option>1</option><option>2</option><option>3</option><option>4</option>
+            <option>5</option><option>6</option><option>7</option><option>8</option><option>9+</option>
+          </select>
+        </div>
+        <div><label class="f-lbl">Occasion</label>
+          <select id="m-occ" class="f-inp f-sel">
+            <option value="">None / Just Dining</option>
+            <option>Birthday 🎂</option><option>Anniversary 💑</option>
+            <option>Date Night 🌹</option><option>Family Gathering 👨‍👩‍👧</option>
+            <option>Business Meal 💼</option>
+          </select>
+        </div>
+        <div class="f-full"><label class="f-lbl">Special Requests</label>
+          <textarea id="m-note" class="f-inp f-ta" placeholder="Dietary needs, seating preference…" rows="2"></textarea>
+        </div>
+      </div>
+      <div class="f-error" id="modError">⚠️ Please fill all required fields.</div>
+      <button class="wa-btn" onclick="submitModal()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.5 2C6.253 2 2 6.253 2 11.5c0 1.938.577 3.741 1.566 5.245L2 22l5.405-1.533A9.456 9.456 0 0011.5 21C16.747 21 21 16.747 21 11.5S16.747 2 11.5 2z"/></svg>
+        Send Reservation via WhatsApp
+      </button>
+      <p class="wa-note">Opens WhatsApp with your booking — confirmed within minutes.</p>
+    </div>
+    <!-- success -->
+    <div id="modSuccess" style="display:none">
+      <div class="res-success">
+        <div class="rs-ico">✅</div>
+        <h3 class="rs-ttl">Reservation Sent!</h3>
+        <p class="rs-msg">Your booking has been sent to The Bangalore Cafe. They'll confirm on WhatsApp shortly.</p>
+        <div class="rs-det" id="modSummary"></div>
+        <button class="btn-primary" style="margin-top:1.5rem;width:100%;justify-content:center" onclick="closeResModal()">
+          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          Done
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+
+  <!-- JavaScript — order matters -->
+  <script src="js/data.js"></script>
+  <script src="js/core.js"></script>
+  <script src="js/menu.js"></script>
+  <script src="js/reservations.js"></script>
+  <script src="js/reviews.js"></script>
+</body>
+</html>
