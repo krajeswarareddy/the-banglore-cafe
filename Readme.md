@@ -7,6 +7,8 @@ This project demonstrates modern frontend development practices, clean UI/UX des
 🔗 Live Website
 https://thebanglorecafe.vercel.app/
 
+**remove this after some time**
+
 📌 Project Overview
 
 The Bangalore Cafe is a modern restaurant landing page built to simulate the digital presence of a contemporary café.
