@@ -4,6 +4,8 @@ A modern, responsive restaurant website designed to showcase The Bangalore Cafe 
 
 This project demonstrates modern frontend development practices, clean UI/UX design, and efficient cloud deployment using a lightweight web architecture.
 
+**remove this on 2nd april 2026**
+
 🔗 Live Website
 https://thebanglorecafe.vercel.app/
 
